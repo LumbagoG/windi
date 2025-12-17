@@ -1,4 +1,4 @@
-import { getElectronApi } from "@shared/api";
+import { getPlatformApi } from "@shared/api";
 import { useCallback, useState } from "react";
 import type { SystemPingState } from "./types";
 
@@ -17,7 +17,7 @@ export function useSystemPing() {
         setState((s) => ({ ...s, isLoading: true, error: null }));
 
         try {
-            const api = getElectronApi();
+            const api = getPlatformApi();
             const result = await api.system.ping();
             setState({ isLoading: false, result, error: null });
         } catch (e) {

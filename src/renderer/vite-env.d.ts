@@ -8,6 +8,6 @@ declare global {
          * Типизированный API, выставленный из preload.
          * В UI нельзя использовать Node/Electron напрямую — только этот контракт.
          */
-        electronAPI: ElectronApi;
+        electronAPI?: ElectronApi;
     }
 }

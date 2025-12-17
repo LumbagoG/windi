@@ -1,4 +1,4 @@
-import { getElectronApi } from "@shared/api";
+import { getPlatformApi } from "@shared/api";
 import { Card } from "@shared/ui";
 import { SystemPingWidget } from "@widgets/systemPingWidget";
 
@@ -7,7 +7,7 @@ import { SystemPingWidget } from "@widgets/systemPingWidget";
  * Здесь собираем виджеты (composition level).
  */
 export function HomePage() {
-    const { versions } = getElectronApi();
+    const { versions } = getPlatformApi();
 
     return (
         <main style={{ padding: 24, display: "grid", gap: 16, maxWidth: 980, margin: "0 auto" }}>

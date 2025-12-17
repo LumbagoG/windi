@@ -17,7 +17,7 @@
 yarn
 ```
 
-## Запуск в dev режиме
+## Запуск в dev режиме (Electron)
 
 ```bash
 yarn dev
@@ -38,6 +38,29 @@ yarn build
 ```bash
 yarn preview
 ```
+
+## Запуск как браузерное SPA (Web)
+
+- **Dev сервер**:
+
+```bash
+yarn dev:web
+```
+
+- **Сборка SPA** (в `dist/web`):
+
+```bash
+yarn build:web
+```
+
+- **Preview SPA**:
+
+```bash
+yarn preview:web
+```
+
+В web-режиме `window.electronAPI` отсутствует, поэтому приложение использует web-реализацию `PlatformApi`
+(`@shared/api -> getPlatformApi()`).
 
 ## Упаковка приложения (electron-builder)
 
