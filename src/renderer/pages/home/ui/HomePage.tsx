@@ -15,7 +15,6 @@ export function HomePage() {
             <header style={{ display: "grid", gap: 6 }}>
                 <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
                     <img src={logoUrl} alt="Windi" style={{ height: 28, width: "auto" }} />
-                    <h1 style={{ margin: 0, fontSize: 24 }}>Windi</h1>
                 </div>
                 <div style={{ opacity: 0.75 }}>
                     Минимальное приложение на Electron + React (FSD в renderer) с режимом Web SPA
