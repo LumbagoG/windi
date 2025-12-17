@@ -9,6 +9,7 @@
             "!**/coverage",
             "!**/dist",
             "!**/out",
+            "!**/release",
             "!**/node_modules",
             "!**/public",
             "!**/storybook-static"

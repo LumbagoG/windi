@@ -84,6 +84,9 @@ web_modules/
 # electron-vite dev output
 out
 
+# electron-builder output
+release
+
 # Nuxt.js build / generate output
 .nuxt
 dist
