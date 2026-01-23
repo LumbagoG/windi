@@ -1,7 +1,5 @@
 #!/usr/bin/env sh
 
-# Прогоняем все линтеры перед коммитом.
-# Важно: не используем --write, чтобы хук не модифицировал рабочее дерево неожиданно.
+# Run all linters before commit.
+# Important: do not use --write, so the hook doesn't modify the working tree unexpectedly.
 npm run lint:all
-
-

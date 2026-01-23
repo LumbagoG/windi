@@ -3,18 +3,18 @@ import react from "@vitejs/plugin-react";
 import { defineConfig } from "electron-vite";
 
 /**
- * Конфигурация сборки Electron-проекта:
- * - main: основной процесс (создание окна, жизненный цикл приложения)
- * - preload: безопасный мост между renderer и Node/Electron API
- * - renderer: React-приложение (UI)
+ * Electron project build configuration:
+ * - main: main process (window creation, app lifecycle)
+ * - preload: safe bridge between renderer and Node/Electron API
+ * - renderer: React application (UI)
  */
 export default defineConfig(({ command }) => {
     const isBuild = command === "build";
 
     return {
         /**
-         * В electron-vite@2.x `main/preload/renderer` — это ОТДЕЛЬНЫЕ Vite-конфиги.
-         * Поэтому здесь нельзя использовать поля `entry/input/vite` (это другой API).
+         * In electron-vite@2.x, `main/preload/renderer` are SEPARATE Vite configs.
+         * Therefore, `entry/input/vite` fields cannot be used here (it's a different API).
          */
         main: {
             build: isBuild

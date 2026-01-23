@@ -2,30 +2,30 @@ import { Button } from "@shared/ui";
 import type { SystemPingState } from "../model/types";
 
 export type SystemPingPanelProps = {
-    /** Состояние фичи (данные для UI). */
+    /** Feature state (data for the UI). */
     state: SystemPingState;
-    /** Действие пользователя: запустить ping. */
+    /** User action: trigger ping. */
     onPing(): void;
 };
 
 /**
- * Презентационный UI для ping.
- * Никаких side-effects/IPC — только отрисовка по props.
+ * Presentational UI for ping.
+ * No side-effects/IPC — only rendering based on props.
  */
 export function SystemPingPanel({ state, onPing }: SystemPingPanelProps) {
     return (
         <div style={{ display: "grid", gap: 12 }}>
             <div style={{ display: "flex", gap: 12, alignItems: "center" }}>
                 <Button onClick={onPing} disabled={state.isLoading}>
-                    {state.isLoading ? "Пингуем…" : "Ping main"}
+                    {state.isLoading ? "Pinging..." : "Ping main"}
                 </Button>
                 {state.result ? (
                     <span style={{ opacity: 0.9 }}>
-                        Ответ: <b>{state.result.message}</b> (
+                        Response: <b>{state.result.message}</b> (
                         {new Date(state.result.at).toLocaleString()})
                     </span>
                 ) : (
-                    <span style={{ opacity: 0.7 }}>Нажми кнопку, чтобы проверить IPC.</span>
+                    <span style={{ opacity: 0.7 }}>Click the button to test IPC.</span>
                 )}
             </div>
 
@@ -38,7 +38,7 @@ export function SystemPingPanel({ state, onPing }: SystemPingPanelProps) {
                         borderRadius: 12,
                     }}
                 >
-                    Ошибка: {state.error}
+                    Error: {state.error}
                 </div>
             ) : null}
         </div>

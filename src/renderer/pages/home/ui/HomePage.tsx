@@ -4,8 +4,8 @@ import logoUrl from "@shared/ui/assets/Logo.svg";
 import { SystemPingWidget } from "@widgets/systemPingWidget";
 
 /**
- * Страница "Домой" — демо-экран приложения.
- * Здесь собираем виджеты (composition level).
+ * Home page — the application's demo screen.
+ * This is where we assemble widgets (composition level).
  */
 export function HomePage() {
     const { versions } = getPlatformApi();
@@ -17,11 +17,11 @@ export function HomePage() {
                     <img src={logoUrl} alt="Windi" style={{ height: 28, width: "auto" }} />
                 </div>
                 <div style={{ opacity: 0.75 }}>
-                    Минимальное приложение на Electron + React (FSD в renderer) с режимом Web SPA
+                    Minimal application using Electron + React (FSD in renderer) with Web SPA mode
                 </div>
             </header>
 
-            <Card title="Версии окружения">
+            <Card title="Environment versions">
                 <div style={{ display: "flex", gap: 16, flexWrap: "wrap", opacity: 0.9 }}>
                     <span>
                         Electron: <b>{versions.electron}</b>

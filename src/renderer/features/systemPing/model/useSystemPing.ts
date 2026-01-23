@@ -3,8 +3,8 @@ import { useCallback, useState } from "react";
 import type { SystemPingState } from "./types";
 
 /**
- * Хук бизнес-логики фичи "ping".
- * UI получает только состояние и callback, без знания об IPC/электроне.
+ * Business logic hook for the "ping" feature.
+ * The UI receives only state and a callback, without knowledge of IPC/Electron.
  */
 export function useSystemPing() {
     const [state, setState] = useState<SystemPingState>({

@@ -5,8 +5,8 @@ import type { ElectronApi } from "../preload/contracts";
 declare global {
     interface Window {
         /**
-         * Типизированный API, выставленный из preload.
-         * В UI нельзя использовать Node/Electron напрямую — только этот контракт.
+         * Typed API exposed from preload.
+         * Node/Electron cannot be used directly in the UI — only this contract.
          */
         electronAPI?: ElectronApi;
     }

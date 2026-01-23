@@ -1,8 +1,8 @@
 import type { ElectronApi } from "../../../../preload/contracts";
 
 /**
- * Доступ к preload API.
- * Вся работа с Electron из UI должна идти только через этот контракт.
+ * Access to the preload API.
+ * All Electron interaction from the UI must go through this contract only.
  */
 export function getElectronApi(): ElectronApi {
     if (!window.electronAPI) {

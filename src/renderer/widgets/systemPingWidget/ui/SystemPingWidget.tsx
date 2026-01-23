@@ -2,12 +2,12 @@ import { SystemPing } from "@features/systemPing";
 import { Card } from "@shared/ui";
 
 /**
- * Виджет: композиция фичи в рамки страницы/экрана.
- * Виджеты агрегируют фичи/энтити, но не содержат бизнес-логики.
+ * Widget: composition of a feature within a page/screen.
+ * Widgets aggregate features/entities but do not contain business logic.
  */
 export function SystemPingWidget() {
     return (
-        <Card title="Проверка связи (IPC)">
+        <Card title="Connectivity check (IPC)">
             <SystemPing />
         </Card>
     );

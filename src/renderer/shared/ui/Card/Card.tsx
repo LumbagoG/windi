@@ -1,12 +1,12 @@
 import type { PropsWithChildren } from "react";
 
 export type CardProps = PropsWithChildren<{
-    /** Заголовок карточки. */
+    /** Card title. */
     title?: string;
 }>;
 
 /**
- * Примитив UI: контейнер с фоном/границей.
+ * UI primitive: container with background/border.
  */
 export function Card({ title, children }: CardProps) {
     return (

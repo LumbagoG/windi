@@ -1,53 +1,53 @@
 # Windi (Electron + React + Vite + TypeScript)
 
-Тестовое приложение **Windi** на Electron, где:
+**Windi** test application on Electron, where:
 
-- **main**: создаёт окно, регистрирует IPC
-- **preload**: типизированный безопасный мост `window.electronAPI`
-- **renderer**: React-приложение, разложенное по **FSD**
+- **main**: creates a window, registers IPC
+- **preload**: typed safe bridge `window.electronAPI`
+- **renderer**: React application, organized by **FSD**
 
-## Требования
+## Requirements
 
 - Node.js **18+**
-- Yarn (в проекте часть скриптов вызывает `yarn`, поэтому он должен быть доступен)
+- Yarn (some scripts in the project call `yarn`, so it should be available)
 
-## Установка
+## Installation
 
 ```bash
 yarn
 ```
 
-## Запуск в dev режиме (Electron)
+## Running in dev mode (Electron)
 
 ```bash
 yarn dev
 ```
 
-Откроется окно Electron. На главной странице:
-- видно версии Electron/Node/Chromium
-- есть кнопка **Ping main**, которая делает `ipcRenderer.invoke('system:ping')` через preload.
+An Electron window will open. On the home page:
+- Electron/Node/Chromium versions are visible
+- there is a **Ping main** button that performs `ipcRenderer.invoke('system:ping')` via preload.
 
-## Сборка (production)
+## Build (production)
 
 ```bash
 yarn build
 ```
 
-Потом можно проверить production-сборку:
+Then you can verify the production build:
 
 ```bash
 yarn preview
 ```
 
-## Запуск как браузерное SPA (Web)
+## Running as a browser SPA (Web)
 
-- **Dev сервер**:
+- **Dev server**:
 
 ```bash
 yarn dev:web
 ```
 
-- **Сборка SPA** (в `dist/web`):
+- **SPA Build** (in `dist/web`):
 
 ```bash
 yarn build:web
@@ -59,71 +59,69 @@ yarn build:web
 yarn preview:web
 ```
 
-В web-режиме `window.electronAPI` отсутствует, поэтому приложение использует web-реализацию `PlatformApi`
+In web mode `window.electronAPI` is absent, so the application uses the web implementation of `PlatformApi`
 (`@shared/api -> getPlatformApi()`).
 
-## Упаковка приложения (electron-builder)
+## App packaging (electron-builder)
 
-- **Пакет в папку (без установщика)**:
+- **Pack to folder (without installer)**:
 
 ```bash
 yarn pack
 ```
 
-Результат: `release/` (например, `release/mac-arm64/*.app`).
+Result: `release/` (e.g., `release/mac-arm64/*.app`).
 
-- **Инсталлятор/дистрибутивы**:
+- **Installer/distributions**:
 
 ```bash
 yarn dist
 ```
 
-## Важное про macOS (подпись)
+## Important note about macOS (signing)
 
-Если у тебя нет Developer ID сертификата, `electron-builder` выведет предупреждение и **пропустит code signing** — для тестового приложения это нормально. Для реального релиза нужно настроить подпись (иначе Gatekeeper будет ругаться).
+If you don't have a Developer ID certificate, `electron-builder` will issue a warning and **skip code signing** — this is normal for a test application. For a real release, you need to configure signing (otherwise Gatekeeper will complain).
 
-## Линтинг
+## Linting
 
 ```bash
 yarn lint
 ```
 
-`lint` запускает полный набор проверок: **Biome + TypeScript + Steiger**.
+`lint` runs the full set of checks: **Biome + TypeScript + Steiger**.
 
 - **Biome**: `yarn lint:biome`
 - **TypeScript**: `yarn lint:types`
-- **Steiger (FSD)**: `yarn lint:steiger` (проверяет только `src/renderer`)
+- **Steiger (FSD)**: `yarn lint:steiger` (checks only `src/renderer`)
 
-## Авто-форматирование
+## Auto-formatting
 
 ```bash
 yarn format
 ```
 
-## Pre-commit хук
+## Pre-commit hook
 
-В проекте подключён **husky**: перед каждым коммитом запускается `npm run lint:all` (Biome + TS + Steiger).
+The project has **husky** connected: before each commit, `npm run lint:all` (Biome + TS + Steiger) is executed.
 
-Дополнительно настроен `lint-staged.config.js` (если захочешь включить автофиксы для staged-файлов).
+Additionally, `lint-staged.config.js` is configured (if you want to enable auto-fixes for staged files).
 
-## Структура проекта (ключевое)
+## Project structure (key parts)
 
 ```text
 src/
-  main/                 # Electron main process (wiring, окно, IPC)
-  preload/              # preload bridge (экспорт window.electronAPI)
+  main/                 # Electron main process (wiring, window, IPC)
+  preload/              # preload bridge (exports window.electronAPI)
   renderer/             # React UI (FSD)
     app/                # bootstrap, providers, global styles
-    pages/              # страницы
-    widgets/            # композиция фич
-    features/           # фичи (model + ui)
+    pages/              # pages
+    widgets/            # feature composition
+    features/           # features (model + ui)
     shared/             # shared/ui, shared/api, shared/lib
-  shared/               # общие контракты (например, IPC types)
+  shared/               # shared contracts (e.g., IPC types)
 ```
 
-## Про IPC и безопасность
+## About IPC and security
 
-- В `BrowserWindow` отключён `nodeIntegration`, включён `contextIsolation`.
-- UI не имеет доступа к Node/Electron напрямую — только через `window.electronAPI` из preload.
-
-
+- In `BrowserWindow`, `nodeIntegration` is disabled, and `contextIsolation` is enabled.
+- The UI has no direct access to Node/Electron — only via `window.electronAPI` from preload.

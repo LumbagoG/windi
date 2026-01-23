@@ -4,8 +4,8 @@ import { App } from "./providers/App";
 import "./styles/global.css";
 
 /**
- * Точка входа renderer (React).
- * Здесь допускается только bootstrap UI, без бизнес-логики.
+ * Renderer entry point (React).
+ * Only UI bootstrapping is allowed here, without business logic.
  */
 function bootstrap(): void {
     const el = document.getElementById("root");

@@ -1,18 +1,18 @@
 import type { PingResult } from "../shared/contracts/system";
 
 /**
- * Контракты preload API, доступные в renderer через `window.electronAPI`.
- * Важно: это “белый список” операций, которые разрешены UI.
+ * Preload API contracts available in the renderer via `window.electronAPI`.
+ * Important: this is a "whitelist" of operations allowed for the UI.
  */
 export type ElectronApi = {
-    /** Версии окружения (отдаём только чтение). */
+    /** Environment versions (read-only). */
     versions: {
         electron: string;
         node: string;
         chrome: string;
     };
 
-    /** Системные операции (через IPC invoke). */
+    /** System operations (via IPC invoke). */
     system: {
         ping(): Promise<PingResult>;
     };

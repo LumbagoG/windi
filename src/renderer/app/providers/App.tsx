@@ -1,8 +1,8 @@
 import { HomePage } from "@pages/home";
 
 /**
- * Корневой UI-компонент приложения.
- * Маршрутизацию/провайдеры можно расширять здесь (theme, i18n, store и т.д.).
+ * Root UI component of the application.
+ * Routing/providers can be extended here (theme, i18n, store, etc.).
  */
 export function App() {
     return <HomePage />;

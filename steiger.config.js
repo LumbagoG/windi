@@ -7,7 +7,7 @@ import { defineConfig } from "steiger";
 export const config = defineConfig([
     ...fsd.configs.recommended,
     {
-        // Игнорируем файлы в node_modules, .next и т.д.
+        // Ignore files in node_modules, .next, etc.
         ignores: [
             "**/node_modules/**",
             "**/.next/**",
@@ -18,23 +18,23 @@ export const config = defineConfig([
         ],
     },
     {
-        // Общие настройки для проекта
-        // Steiger/FSD применяем ТОЛЬКО к renderer-части, где реально используется FSD.
+        // General project settings
+        // Apply Steiger/FSD ONLY to the renderer part, where FSD is actually used.
         files: ["./src/renderer/**"],
         rules: {
-            // Отключаем правило insignificant-slice, так как проект еще в начальной стадии
+            // Disable insignificant-slice rule as the project is still in early stages
             "fsd/insignificant-slice": "off",
-            // Отключаем правило no-segmentless-slices для начального этапа разработки
+            // Disable no-segmentless-slices rule for the initial development phase
             "fsd/no-segmentless-slices": "off",
-            // Отключаем проверку purpose-based сегментов, так как используем типовую структуру
+            // Disable purpose-based segments check as we use a standard structure
             "fsd/segments-by-purpose": "off",
         },
     },
     {
-        // Специальные настройки для shared слоя
+        // Special settings for the shared layer
         files: ["./src/renderer/shared/**"],
         rules: {
-            // Настраиваем особенности shared слоя
+            // Configure shared layer specifics
             "fsd/public-api": "warn",
             "fsd/shared-lib-grouping": "warn",
         },

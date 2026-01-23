@@ -2,8 +2,8 @@ import { ipcMain } from "electron";
 import type { PingResult } from "../../shared/contracts/system";
 
 /**
- * Регистрирует IPC-хендлеры, относящиеся к системным/тестовым операциям.
- * Это “слой приложения” main-процесса: бизнес-логика не должна жить в UI.
+ * Registers IPC handlers related to system/test operations.
+ * This is the "application layer" of the main process: business logic should not reside in the UI.
  */
 export function registerSystemIpc(): void {
     ipcMain.handle("system:ping", async (): Promise<PingResult> => {

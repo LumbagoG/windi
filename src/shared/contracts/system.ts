@@ -1,10 +1,10 @@
 /**
- * Результат тестового ping вызова (IPC).
- * Контракт общий для main/preload/renderer.
+ * Result of a test ping call (IPC).
+ * Shared contract for main/preload/renderer.
  */
 export type PingResult = {
-    /** Текстовый ответ для проверки связности IPC. */
+    /** Text response to verify IPC connectivity. */
     message: string;
-    /** Серверное время (main процесс). */
+    /** Server time (main process). */
     at: string;
 };

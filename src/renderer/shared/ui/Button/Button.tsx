@@ -2,13 +2,13 @@ import type { ButtonHTMLAttributes, PropsWithChildren } from "react";
 
 export type ButtonProps = PropsWithChildren<
     ButtonHTMLAttributes<HTMLButtonElement> & {
-        /** Вариант кнопки для минимальной стилизации без UI библиотеки. */
+        /** Button variant for minimal styling without a UI library. */
         variant?: "primary" | "secondary";
     }
 >;
 
 /**
- * Примитив UI. Не содержит бизнес-логики.
+ * UI primitive. Does not contain business logic.
  */
 export function Button({ variant = "primary", style, ...props }: ButtonProps) {
     const base: React.CSSProperties = {

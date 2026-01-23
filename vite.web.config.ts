@@ -3,8 +3,8 @@ import react from "@vitejs/plugin-react";
 import { defineConfig } from "vite";
 
 /**
- * Vite конфиг для запуска renderer как обычного браузерного SPA.
- * Electron-specific части (preload) в этом режиме отсутствуют.
+ * Vite config for running the renderer as a regular browser SPA.
+ * Electron-specific parts (preload) are absent in this mode.
  */
 export default defineConfig({
     root: resolve(__dirname, "src/renderer"),

@@ -2,8 +2,8 @@ import { useSystemPing } from "../model/useSystemPing";
 import { SystemPingPanel } from "./SystemPingPanel";
 
 /**
- * Контейнер фичи: связывает model и UI.
- * Здесь допустим вызов хука и проброс props; логика остаётся в model.
+ * Feature container: links the model and UI.
+ * Hook calls and prop passing are allowed here; logic remains in the model.
  */
 export function SystemPing() {
     const { state, runPing } = useSystemPing();

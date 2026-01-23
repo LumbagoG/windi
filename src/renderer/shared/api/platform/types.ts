@@ -1,12 +1,12 @@
 import type { PingResult } from "../../../../shared/contracts/system";
 
 /**
- * Унифицированный API платформы для renderer.
+ * Unified platform API for the renderer.
  *
- * - В Electron: проксирует вызовы в preload (IPC).
- * - В Web SPA: даёт web-реализацию (моки/инфо из browser).
+ * - In Electron: proxies calls to preload (IPC).
+ * - In Web SPA: provides the web implementation (mocks/info from the browser).
  *
- * Бизнес-смысл: UI/фичи не должны знать, в какой среде они запущены.
+ * Business logic: UI/features should not know which environment they are running in.
  */
 export type PlatformApi = {
     versions: {

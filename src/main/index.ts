@@ -4,8 +4,8 @@ import { createMainWindow } from "./app/createMainWindow";
 import { registerSystemIpc } from "./ipc/registerSystemIpc";
 
 /**
- * Главная точка входа Electron main процесса.
- * Здесь держим wiring: инициализация приложения, окна, IPC.
+ * Main entry point for the Electron main process.
+ * This is where we keep the wiring: app initialization, window creation, IPC.
  */
 async function bootstrap(): Promise<void> {
     registerSystemIpc();
@@ -13,32 +13,32 @@ async function bootstrap(): Promise<void> {
     const mainWindow = createMainWindow();
 
     /**
-     * electron-vite в dev поднимает renderer dev server и прокидывает URL через env.
-     * Важно: для main процесса используем `process.env`, т.к. `import.meta.env` здесь не гарантирован.
+     * electron-vite in dev mode starts the renderer dev server and passes the URL via env.
+     * Important: use `process.env` for the main process since `import.meta.env` is not guaranteed here.
      */
     const devServerUrl = process.env.ELECTRON_RENDERER_URL;
     if (devServerUrl) {
         await mainWindow.loadURL(devServerUrl);
     } else {
-        // В production грузим статический билд renderer (dist/renderer/index.html).
+        // In production, we load the static renderer build (dist/renderer/index.html).
         await mainWindow.loadFile(join(__dirname, "../renderer/index.html"));
     }
 }
 
 app.whenReady().then(() => {
     void bootstrap().catch((e) => {
-        // Явно логируем, чтобы не было silent/unhandled rejection.
+        // Explicitly log errors to avoid silent/unhandled rejections.
         console.error("Failed to bootstrap Electron app", e);
         app.quit();
     });
 });
 
 app.on("window-all-closed", () => {
-    // На macOS принято оставлять приложение активным до явного quit.
+    // On macOS, it's conventional to keep the application active until an explicit quit.
     if (process.platform !== "darwin") app.quit();
 });
 
 app.on("activate", () => {
-    // На macOS клики по dock-иконке должны восстанавливать окно.
+    // On macOS, clicking the dock icon should restore the window.
     if (BrowserWindow.getAllWindows().length === 0) void bootstrap();
 });

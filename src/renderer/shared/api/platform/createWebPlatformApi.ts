@@ -1,8 +1,8 @@
 import type { PlatformApi } from "./types";
 
 /**
- * Web-реализация PlatformApi для запуска renderer как обычного SPA.
- * Здесь нет IPC, поэтому system.ping — локальная заглушка.
+ * Web implementation of PlatformApi for running the renderer as a regular SPA.
+ * There is no IPC here, so system.ping is a local stub.
  */
 export function createWebPlatformApi(): PlatformApi {
     const chrome = typeof navigator !== "undefined" ? navigator.userAgent : "unknown";

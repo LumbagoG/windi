@@ -2,8 +2,8 @@ import { contextBridge, ipcRenderer } from "electron";
 import type { ElectronApi } from "./contracts";
 
 /**
- * Реализация “моста” между renderer и main процессом.
- * Здесь разрешаем только конкретные безопасные операции и скрываем прямой доступ к `ipcRenderer`.
+ * Implementation of the "bridge" between renderer and main process.
+ * Here we allow only specific safe operations and hide direct access to `ipcRenderer`.
  */
 const api: ElectronApi = {
     versions: {

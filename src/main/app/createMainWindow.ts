@@ -3,13 +3,13 @@ import { join } from "node:path";
 import { BrowserWindow } from "electron";
 
 /**
- * Создаёт главное окно приложения.
- * Важное правило безопасности: Node API недоступны в renderer, взаимодействие идёт через preload.
+ * Creates the main application window.
+ * Important security rule: Node APIs are not available in the renderer; interaction goes through preload.
  */
 export function createMainWindow(): BrowserWindow {
     /**
-     * Резолвим preload-файл под dev/prod без жёсткой привязки к расширению.
-     * В dev electron-vite часто билдит preload как ESM (`index.mjs`), а в prod — как CJS (`index.cjs`).
+     * Resolve the preload file for dev/prod without strict extension binding.
+     * In dev, electron-vite often builds preload as ESM (`index.mjs`), and in prod as CJS (`index.cjs`).
      */
     const preloadPath = existsSync(join(__dirname, "../preload/index.mjs"))
         ? join(__dirname, "../preload/index.mjs")

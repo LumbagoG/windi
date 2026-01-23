@@ -1,14 +1,14 @@
 import type { PingResult } from "../../../../shared/contracts/system";
 
 /**
- * Состояние фичи проверки IPC связи (ping/pong).
- * Бизнес-смысл: дать пользователю/разработчику быстрый сигнал, что main↔renderer связь живая.
+ * State of the IPC connectivity check feature (ping/pong).
+ * Business purpose: provide the user/developer with a quick signal that the main↔renderer connection is alive.
  */
 export type SystemPingState = {
-    /** Идёт ли запрос прямо сейчас. */
+    /** Indicates if a request is currently in progress. */
     isLoading: boolean;
-    /** Последний успешный результат. */
+    /** The last successful result. */
     result: PingResult | null;
-    /** Текст ошибки (если была). */
+    /** Error message (if any). */
     error: string | null;
 };
